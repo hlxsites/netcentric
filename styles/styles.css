@@ -12,6 +12,10 @@
 
 /* fallback font for Gellix (normal - 400) */
 
+header {
+  background-color: yellow;
+}
+
 @font-face {
   font-family: 'gellix-normal-400-fallback';
   size-adjust: 100.871%;
