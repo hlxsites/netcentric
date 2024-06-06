@@ -25,6 +25,10 @@
   src: local('Arial');
 }
 
+header {
+  background-color: red;
+}
+
 :root {
   /* Netcentric colors */
   --c-black: #000;
