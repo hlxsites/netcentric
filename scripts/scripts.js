@@ -331,6 +331,45 @@ function setPageLanguage() {
 }
 
 /**
+ * Updates _main_ tag width the user cookies preference based on the stored in the
+ * 3rd party cookie layer variable ___OptanonActiveGroups___
+ * and listen ___OneTrustGroupsUpdated___ custom event
+ */
+function updateCookieOptions() {
+  const cookieOptions = {
+    C0001: 'Critical',
+    C0002: 'Performance',
+    C0003: 'Functional',
+    C0004: 'Targeting',
+    none: 'none-accepted',
+    all: 'all-accepted',
+  };
+
+  const NONE_ACCEPTED = 1;
+  const ALL_ACCEPTED = 4;
+
+  document.addEventListener('OneTrustGroupsUpdated', () => {
+    const main = document.querySelector('main');
+    // eslint-disable-next-line no-undef
+    const cookies = OptanonActiveGroups.split(',').filter((cookie) => cookie.trim() !== '');
+    const { length } = cookies;
+    if (length <= NONE_ACCEPTED) {
+      main.dataset.wpPageCookie = cookieOptions.none;
+    } else if (length === ALL_ACCEPTED) {
+      main.dataset.wpPageCookie = cookieOptions.all;
+    } else {
+      const acceptedCookies = NONE_ACCEPTED > 0
+        ? cookies.slice(NONE_ACCEPTED)
+        : cookies;
+      acceptedCookies.forEach((cookie, i) => {
+        acceptedCookies[i] = cookieOptions[cookie];
+      });
+      main.dataset.wpPageCookie = acceptedCookies;
+    }
+  });
+}
+
+/**
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
@@ -415,6 +454,7 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+  updateCookieOptions();
 }
 
 loadPage();
