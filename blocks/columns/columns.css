@@ -15,8 +15,7 @@
     margin: 16px 0;
 }
 
-.columns.rainbow > div,
-.columns.rainbow-reverse > div {
+.columns:is(.rainbow, .rainbow-reverse) > div {
     gap: 32px;
     margin: 32px 0;
 }
@@ -25,11 +24,14 @@
     flex-direction: column-reverse;
 }
 
-.columns.rainbow > div > div,
-.columns.rainbow-reverse > div > div {
+.columns:is(.rainbow, .rainbow-reverse) > div > div {
     margin: 0;
     color: var(--c-white);
     padding: 16px;
+}
+
+.columns:is(.rainbow, .rainbow-reverse) > div > div * {
+    color: var(--c-white);
 }
 
 .columns > div > div:first-of-type {
@@ -73,27 +75,33 @@
   background-color: var(--c-dark-gray);
 }
 
-.columns.background-light-plum,
-.columns.background-dark-plum,
-.columns.background-dark-blue,
-.columns.background-light-gray,
-.columns.background-dark-gray {
+.columns:is(
+    .background-light-plum,
+    .background-dark-plum,
+    .background-dark-blue,
+    .background-light-gray,
+    .background-dark-gray
+) {
   padding: 0 16px;
 }
 
-.columns.background-light-plum > div > div,
-.columns.background-dark-blue > div > div,
-.columns.background-dark-plum > div > div,
-.columns.background-light-gray > div > div,
-.columns.background-dark-gray > div > div {
+.columns:is(
+    .background-light-plum,
+    .background-dark-plum,
+    .background-dark-blue,
+    .background-light-gray,
+    .background-dark-gray
+) > div > div {
   background-color: white;
 }
 
-.columns.background-light-plum > div > div > *,
-.columns.background-dark-blue > div > div > *,
-.columns.background-dark-plum > div > div > *,
-.columns.background-light-gray > div > div > *,
-.columns.background-dark-gray > div > div > * {
+.columns:is(
+    .background-light-plum,
+    .background-dark-plum,
+    .background-dark-blue,
+    .background-light-gray,
+    .background-dark-gray
+) > div > div > * {
   margin: 16px 0;
 }
 
@@ -131,19 +139,20 @@
     color: var(--c-dark-plum);
 }
 
+/* Rainbow:  darker-plum, dark-plum, dark-blue  */
 .columns.rainbow > div > div:nth-of-type(3n),
 .columns.rainbow-reverse > div > div:nth-of-type(3n + 1) {
-    background-color: var(--c-mid-blue);
+    background-color: var(--c-dark-blue);
 }
 
 .columns.rainbow > div > div:nth-child(3n + 1),
 .columns.rainbow-reverse > div > div:nth-of-type(3n) {
-    background-color: var(--c-mid-plum);
+    background-color: var(--c-darker-plum);
 }
 
 .columns.rainbow > div > div:nth-child(3n + 2),
 .columns.rainbow-reverse > div > div:nth-of-type(3n + 2) {
-    background-color: var(--c-dark-blue);
+    background-color: var(--c-dark-plum);
 }
 
 @media (min-width: 600px) {

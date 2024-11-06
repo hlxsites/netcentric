@@ -85,6 +85,14 @@ footer .icon svg {
   display: inline-block;
 }
 
+footer .icon-youtube svg {
+  font-size: 40px;
+}
+
+footer .icon-youtube {
+  transform: translateY(-2px);
+}
+
 /* Privacy subsection */
 footer > div > div > div:last-child {
   font-size: 14px;

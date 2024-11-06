@@ -7,6 +7,7 @@ export default function decorate(block) {
     const icon = div.querySelector('.icon');
     const texts = div.querySelectorAll('h2,p');
     const title = div.querySelector('h2');
+    const [, iconName] = icon.className.split('icon icon-');
 
     if (a) {
       a = a.cloneNode(false);
@@ -18,9 +19,7 @@ export default function decorate(block) {
       a = li;
     }
 
-    if (icon.className.includes('twitter')) li.className = 'social-card-twitter';
-    else if (icon.className.includes('facebook')) li.className = 'social-card-facebook';
-    else if (icon.className.includes('linkedin')) li.className = 'social-card-linkedin';
+    li.classList.add('social-card', iconName);
 
     texts.forEach((text) => a.appendChild(text));
     a.appendChild(icon);

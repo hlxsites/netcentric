@@ -22,3 +22,8 @@
   width: 45px;
   fill: var(--c-dark-plum);
 }
+
+.fixed-social-media .icon-youtube svg {
+  width: 35px;
+  translate: 5px;
+}

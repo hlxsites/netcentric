@@ -1,5 +1,5 @@
 .social h2 {
-    color: var(--c-white);
+    color: var(--fg-color);
 }
 
 .social>ul {
@@ -25,6 +25,11 @@
     fill: currentcolor;
 }
 
+.youtube svg {
+    width: 65px;
+    translate: 15px;
+}
+
 .social>ul>li {
     margin: 16px 0;
 }
@@ -44,8 +49,8 @@
     margin: -1px;
 }
 
-.social>ul>li>a:hover h2 {
-  color: var(--bg-color);
+.social>ul>li>a:hover>h2 {
+    color: var(--bg-color);
 }
 
 .social>ul>li>a>* {
@@ -66,19 +71,112 @@
     font-weight: 400;
 }
 
-.social .social-card-linkedin {
+.social .social-card {
+    --fg-color: var(--bg-text-social);
+}
+
+.social-card.linkedin {
     --bg-color: var(--linked-in);
-    --fg-color: var(--bg-text-social);
 }
 
-.social .social-card-facebook {
+.social-card.facebook {
     --bg-color: var(--facebook);
-    --fg-color: var(--bg-text-social);
 }
 
-.social .social-card-twitter {
+.social-card.twitter {
     --bg-color: var(--twitter);
-    --fg-color: var(--bg-text-social);
+}
+
+.social-card.instagram {
+    --bg-color: var(--instagram);
+}
+
+.social-card.youtube {
+    --bg-color: var(--youtube);
+}
+
+.social-card.github {
+    --bg-color: var(--git);
+}
+
+.social:is(
+    .dark-plum,
+    .mid-plum,
+    .light-plum,
+    .dark-blue,
+    .mid-blue,
+    .dark-teal,
+    .dark-gray,
+    .mid-gray,
+    .yellow,
+    .red
+) .social-card {
+    --fg-color: var(--c-white);
+}
+
+.social:is(
+    .mid-teal,
+    .light-blue,
+    .light-teal,
+    .light-gray
+) .social-card {
+    --fg-color: var(--c-dark-plum);
+}
+
+.social.dark-plum .social-card {
+    --bg-color: var(--c-dark-plum);
+}
+
+.social.mid-plum .social-card {
+    --bg-color: var(--c-mid-plum);
+}
+
+.social.light-plum .social-card {
+    --bg-color: var(--c-light-plum);
+}
+
+.social.dark-blue .social-card {
+    --bg-color: var(--c-dark-blue);
+}
+
+.social.mid-blue .social-card {
+    --bg-color: var(--c-mid-blue);
+}
+
+.social.light-blue .social-card {
+    --bg-color: var(--c-light-blue);
+}
+
+.social.dark-teal .social-card {
+    --bg-color: var(--c-dark-teal);
+}
+
+.social.mid-teal .social-card {
+    --bg-color: var(--c-mid-teal);
+}
+
+.social.light-teal .social-card {
+    --bg-color: var(--c-light-teal);
+}
+
+.social.dark-gray .social-card {
+    --bg-color: var(--c-dark-gray);
+}
+
+.social.mid-gray .social-card {
+    --bg-color: var(--c-mid-gray);
+}
+
+.social.light-gray .social-card {
+    --bg-color: var(--c-light-gray);
+}
+
+.social.yellow .social-card {
+    --bg-color: var(--c-yellow);
+}
+
+.social.red .social-card {
+    --bg-color: var(--c-red);
 }
 
 @media (min-width: 600px) {

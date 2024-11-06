@@ -44,7 +44,6 @@
 /* cards side-by-side */
 .cards.side-by-side > ul > li img {
     height: 380px;
-    filter: brightness(45%);
     object-position: 40%;
     object-fit: cover;
     display: block;
@@ -69,10 +68,7 @@
 }
 
 /* cards side-by-side */
-.cards.side-by-side .cards-card-body h2,
-.cards.side-by-side .cards-card-body h3,
-.cards.side-by-side .cards-card-body h4,
-.cards.side-by-side .cards-card-body h5 {
+.cards.side-by-side .cards-card-body :is(h2, h3, h4, h5) {
     color: var(--c-white);
 }
 
@@ -161,10 +157,7 @@
     padding-right: 40px;
 }
 
-.cards.side-by-side .cards-card-body h2 a,
-.cards.side-by-side .cards-card-body h3 a,
-.cards.side-by-side .cards-card-body h4 a,
-.cards.side-by-side .cards-card-body h5 a {
+.cards.side-by-side .cards-card-body :is(h2, h3, h4, h5) a {
     color: var(--c-white);
 }
 
@@ -172,15 +165,13 @@
     font-weight: 600;
 }
 
-.cards.side-by-side .cards-card-body h5 a:hover,
-.cards.side-by-side .cards-card-body h4 a:hover,
-.cards.side-by-side .cards-card-body h3 a:hover{
+.cards.side-by-side .cards-card-body :is(h5, h4, h3) a:hover{
     text-decoration: none;
 }
 
 .cards.side-by-side .cards-card-body h2 {
     font-size: 30px;
-    margin-top: 100px;
+    margin-top: 35px;
     font-weight: 600;
 }
 
@@ -195,6 +186,10 @@
 }
 
 @media (min-width: 600px) {
+    .cards.side-by-side .cards-card-body h2 {
+        margin-top: 100px;
+    }
+
     .cards.teaser.background > ul > li > div:nth-last-child(2) {
         float: left;
         width: 44%;
@@ -234,16 +229,16 @@
         flex: 0 0 100%;
     }
 
-    .cards.side-by-side > ul > li:last-child img {
+    .cards.side-by-side > ul > li img {
         height: 500px;
-        filter: brightness(45%);
+    }
+
+    .cards.side-by-side > ul > li:last-child img {
         object-position: 45% 10%;
         background-size: 70%;
     }
 
     .cards.side-by-side > ul > li:not(li:last-child) img {
-        height: 500px;
-        filter: brightness(45%);
         object-position: 40%;
         object-fit: cover;
     }
@@ -253,7 +248,7 @@
     }
 
     .cards.side-by-side > ul > li > .cards-card-body {
-        width: 260px;
+        width: auto;
     }
 
     .cards.side-by-side > ul > li:nth-last-child(2) > .cards-card-body {
@@ -331,13 +326,8 @@
         transition: 1s;
     }
 
-    .cards.side-by-side > ul > li img {
-        height: 450px;
-        filter: brightness(40%);
-    }
-
     .cards.side-by-side > ul > li:hover > *:not(.cards-card-body) {
-        filter: brightness(140%);
+        filter: brightness(110%);
     }
 
     .cards.side-by-side > ul > li:hover {
