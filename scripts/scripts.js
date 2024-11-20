@@ -153,6 +153,17 @@ export function createIcon(name) {
   return icon;
 }
 
+async function fetchAndSetIframeTitle(urlVendor, iframe) {
+  try {
+    const response = await fetch(urlVendor);
+    const data = await response.json();
+    iframe.setAttribute('title', data.title);
+  } catch (error) {
+    // eslint-disable-next-line vars-on-top
+    console.error('Error:', error);
+  }
+}
+
 function createEmbedIFrame(a, vendor) {
   const div = document.createElement('div');
   div.classList.add(`${vendor}-base`);
@@ -161,18 +172,23 @@ function createEmbedIFrame(a, vendor) {
   let source;
   let className;
   let allow;
+  let urlVendor;
+
   if (vendor === 'youtube') {
     source = `https://www.youtube.com/embed/${id}`;
     className = 'youtube-player';
     allow = 'encrypted-media; accelerometer; gyroscope; picture-in-picture';
+    urlVendor = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
   } else if (vendor === 'spotify') {
     source = `https://open.spotify.com/embed/episode/${id}`;
     className = 'spotify-player';
     allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    urlVendor = 'https://open.spotify.com/oembed?url=https://open.spotify.com/episode/78DmMlPuBgkPzziPKx8oko';
   } else if (vendor === 'wistia') {
     source = `https://fast.wistia.net/embed/iframe/${id}`;
     className = 'wistia-player';
     allow = 'autoplay; clipboard-write; encrypted-media; fullscreen;';
+    urlVendor = `https://fast.wistia.com/oembed/?url=https://fast.wistia.net/embed/iframe/${id}&format=json`;
   }
 
   div.innerHTML = `<iframe data-src="${source}" 
@@ -184,6 +200,8 @@ function createEmbedIFrame(a, vendor) {
     </iframe>`;
 
   a.replaceWith(div);
+  const iframe = div.querySelector('iframe');
+  fetchAndSetIframeTitle(urlVendor, iframe);
   return div;
 }
 
